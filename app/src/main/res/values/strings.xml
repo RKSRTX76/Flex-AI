@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Flex AI</string>
+    <string name="error">I\'m unable to provide a response</string>
+</resources>
