@@ -66,7 +66,7 @@ fun FlexAITheme(
 
     SideEffect {
         systemUiController.setStatusBarColor(
-            color = Color.Transparent,
+            color = Color(0xFF1A1A5C),
             darkIcons = false
         )
         systemUiController.setNavigationBarColor(
