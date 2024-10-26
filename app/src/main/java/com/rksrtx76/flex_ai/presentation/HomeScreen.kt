@@ -14,12 +14,12 @@ import com.rksrtx76.flex_ai.R
 fun HomeScreen(){
     val scrollState = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
-    Scaffold(
-        topBar = {
-            AppBar(title = stringResource(R.string.app_name), scrollState)
-        },
-        modifier = Modifier.nestedScroll(scrollState.nestedScrollConnection)
-    ){
-        ChatScreen(paddingValues = it)
-    }
+//    Scaffold(
+//        topBar = {
+//            AppBar(title = stringResource(R.string.app_name), scrollState)
+//        },
+//        modifier = Modifier.nestedScroll(scrollState.nestedScrollConnection)
+//    ){
+        ChatScreen()
+//    }
 }

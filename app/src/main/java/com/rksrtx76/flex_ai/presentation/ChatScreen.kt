@@ -59,7 +59,7 @@ import kotlinx.coroutines.flow.update
 
 @Composable
 fun ChatScreen(
-    paddingValues: PaddingValues
+
 ){
     val chatViewModel = hiltViewModel<ChatViewModel>()
     val chatState = chatViewModel.chatState.collectAsState().value
@@ -80,6 +80,7 @@ fun ChatScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
+            .padding(top = 16.dp)
             .navigationBarsPadding()
     ){
         // Gradient background with blur effect
@@ -334,6 +335,6 @@ fun ModelChat(response: String) {
 @Composable
 fun PreviewChatScreen() {
     MaterialTheme {
-        ChatScreen(paddingValues = PaddingValues(0.dp))
+        ChatScreen()
     }
 }
