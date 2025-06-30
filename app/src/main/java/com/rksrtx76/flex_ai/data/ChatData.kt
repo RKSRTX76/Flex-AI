@@ -16,7 +16,7 @@ object ChatData {
     // without image
     suspend fun getResponse(prompt : String) : Chat {
         val generativeModel = GenerativeModel(
-            modelName = "gemini-1.5-pro",
+            modelName = "gemini-2.5-flash",
             apiKey = API_KEY
         )
         try {

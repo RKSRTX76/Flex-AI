@@ -65,13 +65,15 @@ fun FlexAITheme(
 
 
     SideEffect {
+        // Dynamically adjust `darkIcons` based on theme
+        val useDarkIcons = !darkTheme
         systemUiController.setStatusBarColor(
-            color = Color(0xFF1A1A5C),
-            darkIcons = false
+            color = Color.Transparent, // Transparent color for immersive UI
+            darkIcons = useDarkIcons
         )
         systemUiController.setNavigationBarColor(
             color = Color(0xFF1A1A5A),
-            darkIcons = false
+            darkIcons = useDarkIcons
         )
     }
 

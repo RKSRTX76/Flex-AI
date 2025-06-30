@@ -17,7 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun AppBar(
     title: String,
-    scrollBehavior: TopAppBarScrollBehavior
+    scrollBehavior: TopAppBarScrollBehavior,
+    modifier : Modifier = Modifier
 ) {
     CenterAlignedTopAppBar(
         scrollBehavior = scrollBehavior,
@@ -33,20 +34,28 @@ fun AppBar(
             titleContentColor = Color(0xFFB1B1F2),
             navigationIconContentColor = Color(0xFFB1B1F2)
         ),
-        modifier = Modifier
+        modifier = modifier
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
                         Color(0xFF4A4ABF),
                         Color(0xFF2B2B8F),
                         Color(0xFF1A1A5A),
-                        Color(0xFF0E0E34),
-                        Color.Transparent
+//                        Color(0xFF2B2B8F),
+//                        Color(0xFF4A4ABF),
+//                        Color(0xFF2B2B8F),
+//                        Color.Transparent,
+//                        Color(0xFF1A1A5A),
+//                        Color(0xFF2B2B8F),
+//                        Color(0xFF4A4ABF),
+//                        Color(0xFF2B2B8F),
+//                        Color(0xFF1A1A5A)
                     ),
                     startY = 0f,
-                    endY = 400f
+                    endY = 260f
                 )
             )
     )
 }
+
 
