@@ -16,7 +16,7 @@ object ChatData {
     // without image
     suspend fun getResponse(prompt : String) : Chat {
         val generativeModel = GenerativeModel(
-            modelName = "gemini-2.5-flash",
+            modelName = "gemini-2.5-pro",
             apiKey = API_KEY
         )
         try {
@@ -41,7 +41,7 @@ object ChatData {
     // with image
     suspend fun getResponseWithImage(prompt : String, bitmap : Bitmap) : Chat {
         val generativeModel = GenerativeModel(
-            modelName = "gemini-1.5-pro",
+            modelName = "gemini-2.5-pro",
             apiKey = API_KEY
         )
         try {

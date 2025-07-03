@@ -96,10 +96,10 @@ fun CircularBubblePattern() {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(top = 32.dp)
+            modifier = Modifier.padding(top = 20.dp)
         ) {
             Text(
-                text = "Hi, can I",
+                text = "Hi there!",
                 style = TextStyle(
                     color = Color.White,
                     fontSize = 20.sp,
@@ -107,7 +107,7 @@ fun CircularBubblePattern() {
                 )
             )
             Text(
-                text = "help you?",
+                text = "I'm here to help ",
                 style = TextStyle(
                     color = Color.White,
                     fontSize = 20.sp,

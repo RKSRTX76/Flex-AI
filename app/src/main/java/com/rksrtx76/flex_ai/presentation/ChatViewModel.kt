@@ -32,7 +32,7 @@ class ChatViewModel @Inject constructor() : ViewModel() {
     fun onEvent(event : ChatUiEvents){
         when(event){
             is ChatUiEvents.SendPrompt -> {
-                if(event.prompt.isNotEmpty()){
+                if(event.prompt.isNotEmpty() || event.bitmap != null){
                     // add prompt to chat/ events
                     addPrompt(event.prompt, event.bitmap)
                     // get response from api
@@ -74,29 +74,66 @@ class ChatViewModel @Inject constructor() : ViewModel() {
 
     private fun getResponse(prompt : String){
         viewModelScope.launch {
-            val chat = ChatData.getResponse(prompt)
+            // loading
+            _chatState.update {
+                it.copy(
+                    chatList = it.chatList.toMutableList().apply {
+                        add(0, Chat(prompt = "...", bitmap = null, isFromUser =  false, isLoading = true))
+                    }
+                )
+            }
+            val response = ChatData.getResponse(prompt)
+            val cleanedResponse = cleanMarkdown(response.prompt)
+            // replace received response
              _chatState.update {
-                 it.copy(
-                     chatList = it.chatList.toMutableList().apply {
-                         add(0, chat)
-                     }
-                 )
+                 val updatedList = it.chatList.toMutableList()
+                 val loadingIndex = updatedList.indexOfFirst { chat ->
+                     !chat.isFromUser && chat.isLoading
+                 }
+                 if(loadingIndex != -1){
+                     // remove temporary loading message
+                     updatedList.removeAt(loadingIndex)
+                 }
+                 updatedList.add(0, Chat(cleanedResponse, bitmap = null, isFromUser = false, isLoading = false))
+                 it.copy(chatList = updatedList)
              }
         }
     }
 
     private fun getResponseWithImage(prompt : String, bitmap : Bitmap){
         viewModelScope.launch {
-            val chat = ChatData.getResponseWithImage(prompt, bitmap)
+            // loading
             _chatState.update {
                 it.copy(
                     chatList = it.chatList.toMutableList().apply {
-                        add(0, chat)
+                        add(0, Chat(prompt = "...", bitmap = null, isFromUser =  false, isLoading = true))
                     }
                 )
+            }
+            val response = ChatData.getResponseWithImage(prompt, bitmap)
+            val cleanedResponse = cleanMarkdown(response.prompt)
+            // replace received response
+            _chatState.update {
+                val updatedList = it.chatList.toMutableList()
+                val loadingIndex = updatedList.indexOfFirst { chat ->
+                    !chat.isFromUser && chat.isLoading
+                }
+                if(loadingIndex != -1){
+                    // remove temporary loading message
+                    updatedList.removeAt(loadingIndex)
+                }
+                updatedList.add(0, Chat(cleanedResponse, bitmap = null, isFromUser = false, isLoading = false))
+                it.copy(chatList = updatedList)
             }
         }
     }
 
+
+    private fun cleanMarkdown(input: String): String {
+        return input
+            .replace(Regex("\\*{1,3}"), "") // Remove *, **, ***
+            .replace(Regex("_+"), "")      // Remove _ and __
+            .trim()
+    }
 
 }

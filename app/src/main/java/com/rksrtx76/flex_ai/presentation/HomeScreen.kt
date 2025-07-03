@@ -29,19 +29,6 @@ fun HomeScreen(
     // Change to pinnedScrollBehavior for smoother effect
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
-//    Scaffold(
-//        topBar = {
-//            AppBar(title = stringResource(R.string.app_name), scrollBehavior)
-//        },
-//        modifier = Modifier
-//            .systemBarsPadding()
-//            .nestedScroll(scrollBehavior.nestedScrollConnection)
-//    ) {
-//        ChatScreen(scrollBehavior, paddingValues = it)
-//    }
-
-
-
     Column(
         modifier = modifier
             .fillMaxSize()

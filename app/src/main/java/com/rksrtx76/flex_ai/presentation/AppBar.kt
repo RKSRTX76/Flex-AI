@@ -41,15 +41,6 @@ fun AppBar(
                         Color(0xFF4A4ABF),
                         Color(0xFF2B2B8F),
                         Color(0xFF1A1A5A),
-//                        Color(0xFF2B2B8F),
-//                        Color(0xFF4A4ABF),
-//                        Color(0xFF2B2B8F),
-//                        Color.Transparent,
-//                        Color(0xFF1A1A5A),
-//                        Color(0xFF2B2B8F),
-//                        Color(0xFF4A4ABF),
-//                        Color(0xFF2B2B8F),
-//                        Color(0xFF1A1A5A)
                     ),
                     startY = 0f,
                     endY = 260f
